@@ -34,7 +34,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <span className="text-2xl font-bold text-gray-900">
-            E-<span className="text-indigo-600">Shop</span>
+            E-<span className="text-orange-600">Shop</span>
             </span>
           </Link>
 
@@ -44,27 +44,27 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors relative group"
+                className="text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors relative group"
               >
                 {link.name}
-                <span className="absolute left-0 -bottom-1 h-0.5 bg-indigo-600 w-0 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute left-0 -bottom-1 h-0.5 bg-orange-600 w-0 group-hover:w-full transition-all duration-300"></span>
               </Link>
             ))}
           </nav>
 
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
-            <button className="p-1 text-gray-700 hover:text-indigo-600 transition-colors">
+            <button className="p-1 text-gray-700 hover:text-orange-600 transition-colors">
               <Search className="h-5 w-5" />
             </button>
             
             <Link 
               href="/checkout" 
-              className="p-1 text-gray-700 hover:text-indigo-600 relative transition-colors"
+              className="p-1 text-gray-700 hover:text-orange-600 relative transition-colors"
             >
               <ShoppingCart className="h-5 w-5" />
               {cartItemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-orange-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   {cartItemCount}
                 </span>
               )}
@@ -72,7 +72,7 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <button 
-              className="md:hidden p-1 text-gray-700 hover:text-indigo-600 transition-colors"
+              className="md:hidden p-1 text-gray-700 hover:text-orange-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -101,7 +101,7 @@ export default function Navbar() {
           >
             My Cart
             {cartItemCount > 0 && (
-              <span className="ml-2 bg-indigo-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="ml-2 bg-orange-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                 {cartItemCount}
               </span>
             )}

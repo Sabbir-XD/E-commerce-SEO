@@ -28,7 +28,7 @@ export default function AddToCartButton({ id, title, price, image }: Props) {
     <button
       onClick={handleAdd}
       disabled={loading}
-      className="mt-3 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 transition"
+      className="mt-3 w-full bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 transition"
     >
       <ShoppingCart size={16} />
 

@@ -46,7 +46,7 @@ export default async function ProductDetails({ params }: { params: { id: string 
           <div className="flex-1">
             <div className="bg-white rounded-xl shadow-sm p-6 h-full">
               <div className="mb-4">
-                <span className="inline-block px-3 py-1 text-xs font-medium bg-indigo-200 text-gray-600 rounded-full">
+                <span className="inline-block px-3 py-1 text-xs font-medium bg-orange-200 text-gray-600 rounded-full">
                   {product.category}
                 </span>
               </div>

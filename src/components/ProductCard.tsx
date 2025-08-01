@@ -35,7 +35,7 @@ export default function ProductCard({ id, title, price, image, rating }: Product
         {/* Hover Overlay Buttons */}
         <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
           <motion.button
-            className="bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg"
+            className="bg-orange-600 hover:bg-orange-700 text-white p-3 rounded-full shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -44,7 +44,7 @@ export default function ProductCard({ id, title, price, image, rating }: Product
           
           <Link href={`/product/${id}`}>
             <motion.button
-              className="bg-white text-indigo-600 p-3 rounded-full shadow-lg"
+              className="bg-white text-orange-600 p-3 rounded-full shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -74,12 +74,12 @@ export default function ProductCard({ id, title, price, image, rating }: Product
         )}
 
         <div className="flex justify-between items-center">
-          <span className="text-lg font-bold text-indigo-600">${price}</span>
+          <span className="text-lg font-bold text-orange-600">${price}</span>
           
           {/* Mobile View Button (hidden on desktop) */}
           <Link 
             href={`/product/${id}`}
-            className="md:hidden text-indigo-600 hover:text-indigo-700 text-sm font-medium flex items-center gap-1"
+            className="md:hidden text-orange-600 hover:text-orange-700 text-sm font-medium flex items-center gap-1"
           >
             <Eye size={16} />
             View
@@ -87,7 +87,7 @@ export default function ProductCard({ id, title, price, image, rating }: Product
         </div>
 
         {/* Quick Add Button (mobile only) */}
-        <button className="mt-3 w-full md:hidden bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 transition">
+        <button className="mt-3 w-full md:hidden bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 transition">
           <ShoppingCart size={16} />
           Add to Cart
         </button>

@@ -97,7 +97,7 @@ export default function CheckoutPage() {
           </p>
           <Link
             href="/orders"
-            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700"
           >
             View Orders
           </Link>
@@ -122,7 +122,7 @@ export default function CheckoutPage() {
           </p>
           <Link
             href="/"
-            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700"
           >
             Continue Shopping
           </Link>
@@ -137,7 +137,7 @@ export default function CheckoutPage() {
       <div className="max-w-2xl mx-auto">
         <Link
           href="/cart"
-          className="flex items-center text-indigo-600 hover:text-indigo-800 mb-8"
+          className="flex items-center text-orange-600 hover:text-orange-800 mb-8"
         >
           <ArrowLeft className="h-5 w-5 mr-2" />
           Back to cart
@@ -212,7 +212,7 @@ export default function CheckoutPage() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className={`block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 ${
+                    className={`block w-full rounded-lg border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 ${
                       errors.name ? "border-red-300" : "border"
                     }`}
                   />
@@ -234,7 +234,7 @@ export default function CheckoutPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 ${
+                    className={`block w-full rounded-lg border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 ${
                       errors.email ? "border-red-300" : "border"
                     }`}
                   />
@@ -256,7 +256,7 @@ export default function CheckoutPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 ${
+                    className={`block w-full rounded-lg border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 ${
                       errors.phone ? "border-red-300" : "border"
                     }`}
                   />
@@ -278,7 +278,7 @@ export default function CheckoutPage() {
                     rows={3}
                     value={formData.address}
                     onChange={handleChange}
-                    className={`block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 ${
+                    className={`block w-full rounded-lg border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 ${
                       errors.address ? "border-red-300" : "border"
                     }`}
                   />
@@ -292,7 +292,7 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
+                  className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 ${
                     isLoading ? "opacity-75 cursor-not-allowed" : ""
                   }`}
                 >

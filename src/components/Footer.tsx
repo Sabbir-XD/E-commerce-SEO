@@ -10,28 +10,28 @@ export default function Footer() {
       <div className="bg-gray-800 py-6">
         <div className="container mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="flex items-center space-x-3">
-            <Truck className="h-6 w-6 text-indigo-400" />
+            <Truck className="h-6 w-6 text-orange-400" />
             <div>
               <h4 className="font-medium text-white">Free Shipping</h4>
               <p className="text-xs text-gray-400">On orders over $50</p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
-            <CreditCard className="h-6 w-6 text-indigo-400" />
+            <CreditCard className="h-6 w-6 text-orange-400" />
             <div>
               <h4 className="font-medium text-white">Secure Payment</h4>
               <p className="text-xs text-gray-400">100% protected</p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
-            <ShieldCheck className="h-6 w-6 text-indigo-400" />
+            <ShieldCheck className="h-6 w-6 text-orange-400" />
             <div>
               <h4 className="font-medium text-white">2-Year Warranty</h4>
               <p className="text-xs text-gray-400">Guaranteed quality</p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
-            <Headphones className="h-6 w-6 text-indigo-400" />
+            <Headphones className="h-6 w-6 text-orange-400" />
             <div>
               <h4 className="font-medium text-white">24/7 Support</h4>
               <p className="text-xs text-gray-400">Dedicated service</p>
@@ -45,7 +45,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Info */}
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold text-white">E-<span className="text-indigo-400">Shop</span></h2>
+            <h2 className="text-3xl font-bold text-white">E-<span className="text-orange-400">Shop</span></h2>
             <p className="text-gray-400">
               Premium electronics and gadgets for the modern lifestyle.
             </p>
@@ -95,11 +95,11 @@ export default function Footer() {
               <input 
                 type="email" 
                 placeholder="Your email" 
-                className="px-4 py-2 w-full rounded-l-md bg-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-indigo-400"
+                className="px-4 py-2 w-full rounded-l-md bg-gray-700 text-white focus:outline-none focus:ring-1 focus:ring-orange-400"
               />
               <button 
                 type="submit" 
-                className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-r-md text-white transition"
+                className="bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-r-md text-white transition"
               >
                 Subscribe
               </button>

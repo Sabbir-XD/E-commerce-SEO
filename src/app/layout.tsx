@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Providers>
           <Navbar />
           <main className="flex-grow">
-            <div className="container mx-auto px-4 py-8">
+            <div className="w-full">
               {children}
             </div>
           </main>
