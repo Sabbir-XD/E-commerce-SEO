@@ -94,4 +94,4 @@ export default function ProductCard({ id, title, price, image, rating }: Product
       </div>
     </motion.div>
   )
-}
+}   

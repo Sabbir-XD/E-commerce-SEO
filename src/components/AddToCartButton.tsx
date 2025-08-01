@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import { AppDispatch } from "../redux/store";
 import { useState } from "react";
+import { ShoppingCart } from "lucide-react";
 
 interface Props {
   id: number;
@@ -27,8 +28,10 @@ export default function AddToCartButton({ id, title, price, image }: Props) {
     <button
       onClick={handleAdd}
       disabled={loading}
-      className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition disabled:opacity-50"
+      className="mt-3 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 transition"
     >
+      <ShoppingCart size={16} />
+
       {loading ? "Adding..." : "Add to Cart"}
     </button>
   );

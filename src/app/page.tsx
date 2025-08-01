@@ -1,46 +1,53 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Loader2 } from 'lucide-react'
-import { Button, Text } from '@radix-ui/themes'
-import ProductCard from '@/components/ProductCard'
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { motion, AnimatePresence } from "framer-motion";
+import { Loader2 } from "lucide-react";
+import { Button, Text } from "@radix-ui/themes";
+import ProductCard from "@/components/ProductCard";
+import HeroBanner from "@/components/HeroBanner";
+// import HeroBanner from "@/components/HeroBanner";
 
 const CATEGORIES = [
-  'all',
-  'electronics',
-  'jewelery',
+  "all",
+  "electronics",
+  "jewelery",
   "men's clothing",
-  "women's clothing"
-] as const
+  "women's clothing",
+] as const;
 
-async function getProducts(category: string = 'all') {
-  const url = category === 'all' 
-    ? 'https://fakestoreapi.com/products'
-    : `https://fakestoreapi.com/products/category/${category}`
-  
-  const res = await fetch(url)
-  if (!res.ok) throw new Error('Failed to fetch products')
-  return res.json()
+async function getProducts(category: string = "all") {
+  const url =
+    category === "all"
+      ? "https://fakestoreapi.com/products"
+      : `https://fakestoreapi.com/products/category/${category}`;
+
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Failed to fetch products");
+  return res.json();
 }
 
 export default function Products() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all')
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  const { data: products, isLoading, isError } = useQuery({
-    queryKey: ['products', selectedCategory],
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["products", selectedCategory],
     queryFn: () => getProducts(selectedCategory),
-  })
+  });
 
   const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category)
-  }
+    setSelectedCategory(category);
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Category Selector */}
-      <motion.div 
+      <motion.div
         className="mb-12"
         initial={{ y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -55,8 +62,8 @@ export default function Products() {
               onClick={() => handleCategoryChange(category)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 selectedCategory === category
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-500/30'
-                  : 'bg-neutral-800 hover:bg-neutral-700 text-indigo-100'
+                  ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/30"
+                  : "bg-neutral-800 hover:bg-neutral-700 text-indigo-100"
               }`}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -80,8 +87,8 @@ export default function Products() {
           <Text color="red" size="4" weight="bold">
             Failed to load products
           </Text>
-          <Button 
-            variant="solid" 
+          <Button
+            variant="solid"
             className="bg-indigo-600 hover:bg-indigo-700 shadow-indigo-500/20"
             onClick={() => window.location.reload()}
           >
@@ -121,5 +128,5 @@ export default function Products() {
         </AnimatePresence>
       )}
     </div>
-  )
+  );
 }

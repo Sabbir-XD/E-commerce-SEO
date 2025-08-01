@@ -59,7 +59,7 @@ export default function Navbar() {
             </button>
             
             <Link 
-              href="/cart" 
+              href="/checkout" 
               className="p-1 text-gray-700 hover:text-indigo-600 relative transition-colors"
             >
               <ShoppingCart className="h-5 w-5" />
