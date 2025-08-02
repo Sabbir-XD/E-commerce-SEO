@@ -1,6 +1,6 @@
 # 🛍️ E-commerce SEO Optimized Website
 
-![Banner](https://ecommerce-seo.vercel.app/_next/static/media/og-image.png)  
+![alt text](image-1.png)
 > A modern **Next.js E-commerce** app with **Redux Toolkit**, **SEO optimization**, and **responsive design**.  
 
 **Live Preview:** [https://ecommerce-seo.vercel.app](https://ecommerce-seo.vercel.app)
@@ -83,8 +83,12 @@ sitemap.xml
 1. **Clone the repository**
    ```bash
    git clone https://github.com/your-username/ecommerce-seo.git
-   cd ecommerce-seo
-npm install
-npm run dev
-npm run build
-npm start
+   cd ecommerce-seo 
+   npm install 
+   npm run dev 
+   npm run build 
+   npm start
+
+
+
+

@@ -48,7 +48,7 @@ export default function Products() {
     <main className="w-full min-h-screen">
       <BannerSlider />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <span className="text-2xl font-bold text-gray-900">Our Products</span>
+        <h2 className="text-2xl font-bold text-center text-gray-900">Ours <span className="text-orange-600">Products</span></h2>
         <motion.div
           className="mb-12"
           initial={{ y: -10, opacity: 0 }}

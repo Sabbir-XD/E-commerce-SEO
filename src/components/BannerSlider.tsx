@@ -56,7 +56,7 @@ const banners: Banner[] = [
 
 export default function BannerSlider() {
   return (
-    <div className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-xl shadow-xl mx-auto max-w-[1800px]">
+    <div className="relative h-[400px] md:h-[400px] lg:h-[450px] overflow-hidden rounded-xl shadow-xl mx-auto max-w-[1800px]">
       <Swiper
         modules={[Autoplay, EffectFade, Pagination]}
         effect="fade"
