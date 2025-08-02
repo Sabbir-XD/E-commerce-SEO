@@ -6,10 +6,10 @@ import Footer from "@/components/Footer"
 import Providers from "@/components/Providers"
 import { Inter } from 'next/font/google'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  fallback: ['system-ui', 'Arial'],
 })
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.className}>
       <body className="min-h-screen flex flex-col">
         <Providers>
           <Navbar />

@@ -3,7 +3,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useState } from "react";
-import { Package, ChevronDown, ChevronUp, CalendarDays, User, ListOrdered, DollarSign, Truck, CreditCard, ArrowLeft } from "lucide-react";
+import { Package, ChevronDown, ChevronUp, CalendarDays, User, ListOrdered, Truck, CreditCard, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -29,7 +29,7 @@ export default function OrdersPage() {
           <p className="text-gray-600 mb-6">Your order history will appear here once you make purchases.</p>
           <Link 
             href="/" 
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white bg-gradient-to-r from-blue-600 to-orange-600 hover:from-blue-700 hover:to-orange-700 transition-all shadow-md hover:shadow-lg"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white bg-gradient-to-r from-amber-300 to-orange-600 hover:from-blue-700 hover:to-orange-700 transition-all shadow-md hover:shadow-lg"
           >
             Start Shopping
           </Link>
@@ -71,7 +71,7 @@ export default function OrdersPage() {
                       <div className="flex flex-wrap gap-x-4 gap-y-1.5 mt-1.5 text-sm text-gray-500">
                         <span className="flex items-center">
                           <CalendarDays className="mr-1.5 h-4 w-4 flex-shrink-0 text-gray-400" />
-                          {order.orderDate ? new Date(order.orderDate).toLocaleDateString("en-US", {
+                          {order.date ? new Date(order.date).toLocaleDateString("en-US", {
                             year: 'numeric',
                             month: 'short',
                             day: 'numeric'
@@ -87,7 +87,7 @@ export default function OrdersPage() {
                   <div className="flex items-center gap-6">
                     <div className="text-right">
                       <p className="text-sm text-gray-500">Total</p>
-                      <p className="font-semibold text-lg text-blue-600">${order.totalAmount?.toFixed(2)}</p>
+                      <p className="font-semibold text-lg text-blue-600">${order.total?.toFixed(2)}</p>
                     </div>
                     <div className="text-gray-400">
                       {expandedOrders[order.id] ? (
@@ -156,7 +156,7 @@ export default function OrdersPage() {
                       <div className="text-sm text-gray-600 space-y-2">
                         <div className="flex justify-between">
                           <span className="text-gray-500">Subtotal</span>
-                          <span>${order.totalAmount?.toFixed(2)}</span>
+                          <span>${order.total?.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-500">Shipping</span>
@@ -164,7 +164,7 @@ export default function OrdersPage() {
                         </div>
                         <div className="flex justify-between font-medium text-gray-900 pt-2 border-t border-gray-200">
                           <span>Total</span>
-                          <span>${order.totalAmount?.toFixed(2)}</span>
+                          <span>${order.total?.toFixed(2)}</span>
                         </div>
                         <div className="pt-2">
                           <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">

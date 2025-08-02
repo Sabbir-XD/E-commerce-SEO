@@ -3,14 +3,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import AddToCartButton from "../../../components/AddToCartButton";
+import { Product } from "@/types/product"; 
 
-async function getProduct(id: string) {
-  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+interface ProductPageProps {
+  params: Promise<{ id: string }>;  // <-- Promise টাইপ
+}
+
+async function getProduct(id: string): Promise<Product> {
+  const res = await fetch(`https://fakestoreapi.com/products/${id}`, { next: { revalidate: 60 } });
+  if (!res.ok) throw new Error("Failed to fetch product");
   return res.json();
 }
 
-export default async function ProductDetails({ params }: { params: { id: string } }) {
-  const product = await getProduct(params.id);
+export default async function ProductDetails({ params }: ProductPageProps) {
+  const { id } = await params; // <-- এখন await করতে হবে
+  const product = await getProduct(id);
 
   return (
     <>
@@ -20,7 +27,6 @@ export default async function ProductDetails({ params }: { params: { id: string 
       </Head>
 
       <div className="container mx-auto px-4 sm:px-6 py-8 max-w-7xl">
-        {/* Back button */}
         <Link 
           href="/" 
           className="flex items-center text-gray-600 hover:text-gray-900 mb-6 transition-colors duration-200"
@@ -30,7 +36,6 @@ export default async function ProductDetails({ params }: { params: { id: string 
         </Link>
 
         <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
-          {/* Product image */}
           <div className="w-full md:w-1/2 lg:w-2/5 bg-white rounded-xl shadow-sm p-6 flex items-center justify-center">
             <Image
               src={product.image}
@@ -42,7 +47,6 @@ export default async function ProductDetails({ params }: { params: { id: string 
             />
           </div>
 
-          {/* Product details */}
           <div className="flex-1">
             <div className="bg-white rounded-xl shadow-sm p-6 h-full">
               <div className="mb-4">
@@ -60,7 +64,7 @@ export default async function ProductDetails({ params }: { params: { id: string 
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className={`w-5 h-5 ${i < Math.floor(product.rating?.rate) ? 'text-yellow-400' : 'text-gray-300'}`}
+                      className={`w-5 h-5 ${i < Math.floor(product.rating?.rate ?? 0) ? 'text-yellow-400' : 'text-gray-300'}`}
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -68,7 +72,7 @@ export default async function ProductDetails({ params }: { params: { id: string 
                     </svg>
                   ))}
                   <span className="ml-2 text-gray-600">
-                    {product.rating?.rate} ({product.rating?.count} reviews)
+                    {product.rating?.rate ?? "N/A"} ({product.rating?.count ?? 0} reviews)
                   </span>
                 </div>
               </div>

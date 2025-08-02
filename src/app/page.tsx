@@ -8,8 +8,7 @@ import { Button, Text } from "@radix-ui/themes";
 import ProductCard from "@/components/ProductCard";
 import BannerSlider from "@/components/BannerSlider";
 import OfferBanner from "@/components/OfferBanner";
-
-// import HeroBanner from "@/components/HeroBanner";
+import { Product } from "@/types/product";
 
 const CATEGORIES = [
   "all",
@@ -18,8 +17,7 @@ const CATEGORIES = [
   "men's clothing",
   "women's clothing",
 ] as const;
-
-async function getProducts(category: string = "all") {
+async function getProducts(category: string = "all"): Promise<Product[]> {
   const url =
     category === "all"
       ? "https://fakestoreapi.com/products"
@@ -37,7 +35,7 @@ export default function Products() {
     data: products,
     isLoading,
     isError,
-  } = useQuery({
+  } = useQuery<Product[]>({
     queryKey: ["products", selectedCategory],
     queryFn: () => getProducts(selectedCategory),
   });
@@ -51,7 +49,6 @@ export default function Products() {
       <BannerSlider />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <span className="text-2xl font-bold text-gray-900">Our Products</span>
-        {/* Category Selector */}
         <motion.div
           className="mb-12"
           initial={{ y: -10, opacity: 0 }}
@@ -77,7 +74,6 @@ export default function Products() {
           </div>
         </motion.div>
 
-        {/* Product Grid */}
         {isLoading ? (
           <div className="flex justify-center py-20">
             <motion.div

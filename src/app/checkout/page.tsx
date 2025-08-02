@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../redux/store";
 import { clearCart } from "../../redux/cartSlice";
 import { placeOrder } from "../../redux/ordersSlice";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Check, ShoppingBag, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { Order } from "../../redux/ordersSlice";
 
 export default function CheckoutPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,7 +23,7 @@ export default function CheckoutPage() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [placedOrder, setPlacedOrder] = useState<any>(null);
+  const [placedOrder, setPlacedOrder] = useState<Order | null>(null);
 
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -45,7 +46,7 @@ export default function CheckoutPage() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -60,12 +61,12 @@ export default function CheckoutPage() {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    const newOrder = {
+    const newOrder: Order = {
       id: Date.now().toString(),
       ...formData,
       items: cartItems,
-      totalAmount: Number(total),
-      orderDate: new Date().toISOString(),
+      total: Number(total),
+      date: new Date().toISOString(),
     };
 
     dispatch(placeOrder(newOrder));
@@ -75,7 +76,6 @@ export default function CheckoutPage() {
     setIsLoading(false);
   };
 
-  // ---------- Order Placed Page ----------
   if (orderPlaced && placedOrder) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
@@ -92,7 +92,7 @@ export default function CheckoutPage() {
           <p className="text-gray-600 mb-6">
             Total Amount:{" "}
             <span className="text-green-600">
-              ${placedOrder.totalAmount.toFixed(2)}
+              ${placedOrder.total.toFixed(2)}
             </span>
           </p>
           <Link
@@ -106,7 +106,6 @@ export default function CheckoutPage() {
     );
   }
 
-  // ---------- Empty Cart ----------
   if (cartItems.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4">
@@ -118,7 +117,7 @@ export default function CheckoutPage() {
             Your cart is empty
           </h1>
           <p className="text-gray-600 mb-6">
-            Looks like you haven't added anything to your cart yet
+            Looks like you haven&apos;t added anything to your cart yet
           </p>
           <Link
             href="/"
@@ -131,7 +130,6 @@ export default function CheckoutPage() {
     );
   }
 
-  // ---------- Checkout Form ----------
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ShoppingCart, Search, Menu, X } from "lucide-react";
 import { useSelector } from "react-redux";
-import { RootState } from "@/app/store";
+import { RootState } from "@/redux/store"; // <-- Fixed path
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
@@ -31,14 +31,12 @@ export default function Navbar() {
     <header className={`w-full sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white/90 backdrop-blur-sm'}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <Link href="/" className="flex items-center">
             <span className="text-2xl font-bold text-gray-900">
-            E-<span className="text-orange-600">Shop</span>
+              E-<span className="text-orange-600">Shop</span>
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -52,7 +50,6 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Right Icons */}
           <div className="flex items-center space-x-4">
             <button className="p-1 text-gray-700 hover:text-orange-600 transition-colors">
               <Search className="h-5 w-5" />
@@ -70,7 +67,6 @@ export default function Navbar() {
               )}
             </Link>
 
-            {/* Mobile Menu Button */}
             <button 
               className="md:hidden p-1 text-gray-700 hover:text-orange-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -81,7 +77,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} bg-white shadow-lg`}>
         <div className="container mx-auto px-4 py-2 space-y-3">
           {navLinks.map((link) => (

@@ -4,22 +4,26 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { ShoppingCart, Eye, Star } from "lucide-react"
+import { Product } from "@/types/product"
 
-interface Product {
-  id: number
-  title: string
-  price: number
-  image: string
-  rating?: {
-    rate: number
-    count: number
-  }
-}
+type ProductCardProps = Pick<Product, "id" | "title" | "price" | "image" | "rating" | "category"> & {
+  onAddToCart?: (id: number) => void;
+  className?: string; // <-- Added this
+};
 
-export default function ProductCard({ id, title, price, image, rating }: Product) {
+export default function ProductCard({ 
+  id, 
+  title, 
+  price, 
+  image, 
+  rating,
+  category,
+  onAddToCart,
+  className
+}: ProductCardProps) {
   return (
     <motion.div 
-      className="group relative bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300"
+      className={`group relative bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 ${className || ''}`}
       whileHover={{ y: -5 }}
     >
       {/* Product Image */}
@@ -31,17 +35,16 @@ export default function ProductCard({ id, title, price, image, rating }: Product
           className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
-
-        {/* Hover Overlay Buttons */}
-        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
+        {/* Hover Buttons */}
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center gap-2">
           <motion.button
             className="bg-orange-600 hover:bg-orange-700 text-white p-3 rounded-full shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => onAddToCart && onAddToCart(id)}
           >
             <ShoppingCart size={20} />
           </motion.button>
-          
           <Link href={`/product/${id}`}>
             <motion.button
               className="bg-white text-orange-600 p-3 rounded-full shadow-lg"
@@ -56,7 +59,8 @@ export default function ProductCard({ id, title, price, image, rating }: Product
 
       {/* Product Info */}
       <div className="p-4">
-        <h3 className="font-medium text-gray-900 line-clamp-2 mb-2">{title}</h3>
+        <h3 className="font-medium text-gray-900 line-clamp-2 mb-1">{title}</h3>
+        <p className="text-xs text-gray-500 mb-2">{category}</p>
         
         {rating && (
           <div className="flex items-center mb-2">
@@ -74,9 +78,7 @@ export default function ProductCard({ id, title, price, image, rating }: Product
         )}
 
         <div className="flex justify-between items-center">
-          <span className="text-lg font-bold text-orange-600">${price}</span>
-          
-          {/* Mobile View Button (hidden on desktop) */}
+          <span className="text-lg font-bold text-orange-600">${price.toFixed(2)}</span>
           <Link 
             href={`/product/${id}`}
             className="md:hidden text-orange-600 hover:text-orange-700 text-sm font-medium flex items-center gap-1"
@@ -86,12 +88,15 @@ export default function ProductCard({ id, title, price, image, rating }: Product
           </Link>
         </div>
 
-        {/* Quick Add Button (mobile only) */}
-        <button className="mt-3 w-full md:hidden bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 transition">
+        {/* Mobile Add to Cart */}
+        <button 
+          className="mt-3 w-full md:hidden bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-1 transition"
+          onClick={() => onAddToCart && onAddToCart(id)}
+        >
           <ShoppingCart size={16} />
           Add to Cart
         </button>
       </div>
     </motion.div>
   )
-}   
+}

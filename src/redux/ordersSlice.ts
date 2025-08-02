@@ -4,14 +4,16 @@ interface OrderItem {
   id: number;
   title: string;
   price: number;
+  image: string;
   quantity: number;
 }
 
-interface Order {
+export interface Order {
   id: string;
   name: string;
   address: string;
   phone: string;
+  email: string;
   items: OrderItem[];
   total: number;
   date: string;
