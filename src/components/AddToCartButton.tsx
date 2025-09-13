@@ -5,6 +5,7 @@ import { addToCart } from "../redux/cartSlice";
 import { AppDispatch } from "../redux/store";
 import { useState } from "react";
 import { ShoppingCart } from "lucide-react";
+import Swal from "sweetalert2";
 
 interface Props {
   id: number;
@@ -21,7 +22,12 @@ export default function AddToCartButton({ id, title, price, image }: Props) {
     setLoading(true);
     dispatch(addToCart({ id, title, price, image, quantity: 1 }));
     setTimeout(() => setLoading(false), 300);
-    alert(`${title} added to cart!`);
+    Swal.fire({
+      icon: "success",
+      title: `${title} added to cart!`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (
