@@ -36,7 +36,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/ecommerce-seo.git
+   git clone https://github.com/Sabbir-XD/ecommerce-seo.git
    cd ecommerce-seo
    npm install
    npm run dev
